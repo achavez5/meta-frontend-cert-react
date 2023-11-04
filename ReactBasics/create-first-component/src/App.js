@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
-function NotApp () {
+function Heading () {
   return (
-    <p>another smaller component</p>
+    <h1>This is an h1 heading!</h1>
   );
 }
 
@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Hello to the world!</h1>
-        <NotApp />
+        <Heading />
       </header>
     </div>
   );
