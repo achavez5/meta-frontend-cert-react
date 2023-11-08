@@ -1,12 +1,20 @@
 import Fruits from "./Fruits";
 import FruitsCounter from "./FruitsCounter";
+import React from "react";
 
 function App() {
+  const [fruits] = React.useState([
+    {fruitName: 'apple', id: 1},
+    {fruitName: 'apple', id: 2},
+    {fruitName: 'plum', id: 3},
+    {fruitName: 'banana', id: 4},
+  ]);
+
   return (
     <div className="App">
       <h1>Where should the state go?</h1>
-      <Fruits />
-      <FruitsCounter />
+      <Fruits fruits={fruits}/>
+      <FruitsCounter fruits={fruits}/>
     </div>
   );
 }
