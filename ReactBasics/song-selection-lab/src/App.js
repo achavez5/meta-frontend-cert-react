@@ -10,13 +10,8 @@ function App() {
     "https://upload.wikimedia.org/wikipedia/commons/b/b5/Hydroprogne_caspia_-_Caspian_Tern_XC432881.mp3"
   );
 
-  function toggle1() {
-    if (bird1.paused) {
-      bird1.play();
-    } else {
-      bird1.pause();
-    }
-  };
+  function toggle1() { bird1[bird1.paused ? "play" : "pause"]() };
+  function toggle2() { bird2[bird2.paused ? "play" : "pause"]() };
 
   return (
     <div>
