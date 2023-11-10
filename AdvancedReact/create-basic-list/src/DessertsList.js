@@ -1,14 +1,17 @@
 function DessertsList(props) {
-  const desserts = props.data;
+  let desserts = props.data;
+  
+  // filter and sort
+  desserts = desserts.filter( dessert => { return Number(dessert.calories) < 500  });
+  desserts.sort( (a, b) => { return a.calories < b.calories ? -1 : 1; });
+  
+  // generate list items 
   const listItems = desserts.map( (dessert) => { 
-    let dessertDescription = `${dessert.name} - ${dessert.calories} cal`;
-    return <li>{dessertDescription}</li>;
+    return <li>{`${dessert.name} - ${dessert.calories} cal`}</li>;
   });
-  console.log(listItems);
+
   return (
-    <ul>
-      { listItems }
-    </ul>
+    <ul>{ listItems }</ul>
   );
 };
 
