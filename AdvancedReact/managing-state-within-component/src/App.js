@@ -12,7 +12,13 @@ export default function App() {
   );
 
   function spendGiftCard() {
-    
+    const tempCard = {
+      ...giftCard,
+      text: "Your courpon has been used.", 
+      instructions: "Please visit our restaurant to renew your gift card.", 
+      valid: false 
+    };
+    setGiftCard(tempCard);
   }
 
   return (
