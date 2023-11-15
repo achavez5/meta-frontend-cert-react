@@ -1,10 +1,20 @@
 import * as React from "react";
 import "./styles.css";
 
+// select prop stores the value of the radio button that is selected
+// this means that if the state of selected is empty, the group will not have a default selected value
+// and requires user to select the first value
 export const RadioGroup = ({ onChange, selected, children }) => {
   // Use React.Children.map and React.cloneElement to clone the children
   // and pass the correct props to each RadioOption
-  const RadioOptions = null;
+  
+
+  const RadioOptions = React.Children.map( children, (child, index) => {
+    return React.cloneElement(child, { 
+      ...child.props,
+      checked: child.props.value == selected /**Check if the radio button has been selected */,
+      onChange: onChange});
+  } );
 
   return <div className="RadioGroup">{RadioOptions}</div>;
 };
@@ -12,9 +22,13 @@ export const RadioGroup = ({ onChange, selected, children }) => {
 export const RadioOption = ({ value, checked, onChange, children }) => {
   // Hook up the onChange handler to call the onChange prop passed to RadioGroup
   // Also, make sure to pass the correct checked prop to the input element
+  const handleChange = (e) => {
+    onChange(e.target.value);
+  };
+
   return (
     <div className="RadioOption">
-      <input id={value} type="radio" name={value} />
+      <input id={value} type="radio" name={value} value={value} checked={checked} onChange={handleChange} />
       <label htmlFor={value}>{children}</label>
     </div>
   );
