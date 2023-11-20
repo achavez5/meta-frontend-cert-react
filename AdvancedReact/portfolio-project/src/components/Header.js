@@ -25,9 +25,13 @@ const socials = [
 ];
 
 const Header = () => {
-  const handleClick = (anchor) => () => {
-    const id = `${anchor}-section`;
+  const handleClick = (e) => {
+    const sectionName = e.target.text.toLowerCase().replace(" ","");
+    const id = `${sectionName}-section`;
     const element = document.getElementById(id);
+    
+    e.preventDefault();
+
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
@@ -64,7 +68,8 @@ const Header = () => {
           </nav>
           <nav>
             <HStack spacing={8}>
-              {/* Add links to Projects and Contact me section */}
+              <a href="/#contact-me" onClick={ handleClick }>Projects</a>
+              <a href="/#projects"   onClick={ handleClick }>Contact Me</a>
             </HStack>
           </nav>
         </HStack>
