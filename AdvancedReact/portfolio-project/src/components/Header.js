@@ -12,24 +12,16 @@ import { Box, HStack } from "@chakra-ui/react";
 const socials = [
   {
     icon: faEnvelope,
-    url: "mailto: hello@example.com",
+    url: "mailto: achavezv97@gmail.com",
   },
   {
     icon: faGithub,
-    url: "https://github.com",
+    url: "https://github.com/achavez5",
   },
   {
     icon: faLinkedin,
-    url: "https://www.linkedin.com",
-  },
-  {
-    icon: faMedium,
-    url: "https://medium.com",
-  },
-  {
-    icon: faStackOverflow,
-    url: "https://stackoverflow.com",
-  },
+    url: "https://www.linkedin.com/in/alejandro-chavez-151bb8164/",
+  }
 ];
 
 const Header = () => {
@@ -64,7 +56,11 @@ const Header = () => {
           alignItems="center"
         >
           <nav>
-            {/* Add social media links based on the `socials` data */}
+            <HStack>
+              {
+                socials.map( (e) => <a href={e.url} key={e.url}><FontAwesomeIcon icon={e.icon} size="2x"/></a>)
+              }
+            </HStack>
           </nav>
           <nav>
             <HStack spacing={8}>
