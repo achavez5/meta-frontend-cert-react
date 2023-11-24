@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { FormikContext, useFormik } from "formik";
+import { useFormik } from "formik";
 import {
   Box,
   Button,
@@ -16,7 +16,6 @@ import * as Yup from 'yup';
 import FullScreenSection from "./FullScreenSection";
 import useSubmit from "../hooks/useSubmit";
 import {useAlertContext} from "../context/alertContext";
-import { m } from "framer-motion";
 
 const LandingSection = () => {
   const {isLoading, response, submit} = useSubmit();
@@ -24,10 +23,10 @@ const LandingSection = () => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: "Alejandro",
-      email: "achavezv97@gmail.com",
+      firstName: "",
+      email: "",
       type: "hireMe",
-      comment: "This is something I need to submit that has a length longer than 25 characters" 
+      comment: "" 
     },
     onSubmit: async (values) => {
       try {
@@ -94,7 +93,7 @@ const LandingSection = () => {
                 <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
               </FormControl>
               <FormControl>
-                <FormLabel htmlFor="type">Type of enquiry</FormLabel>
+                <FormLabel htmlFor="type">Type of inquiry</FormLabel>
                 <Select id="type" name="type" {...formik.getFieldProps("type")}>
                   <option value="hireMe">Freelance project proposal</option>
                   <option value="openSource">
